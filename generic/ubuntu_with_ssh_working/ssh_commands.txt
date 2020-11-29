@@ -1,0 +1,5 @@
+python3 -c "print('123\n123')" | passwd
+python3 -c "print('123\n123')" | adduser moses
+usermod -aG sudo moses
+service ssh start
+ifconfig
