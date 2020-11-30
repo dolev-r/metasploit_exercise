@@ -1,9 +1,0 @@
-enter: sudo ./run.sh
-
-in the attacker:
-	the attacker should figure out the version of ssh, and then use the vulnerability
-	need to git clone: https://github.com/blacknbunny/CVE-2018-10933
-	install python3-pip
-	need to fix the output error, then it works
-
-
