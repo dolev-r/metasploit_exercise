@@ -2,11 +2,11 @@
 from flask import Flask, request
 from flask import render_template
 from flask_cors import CORS
-import pickle
+import pickle, base64
 
 class Executer(object):
 	not_allowed = [
-		"\'",
+		# "\'",
 		"print",
 		"import",
 		"eval",

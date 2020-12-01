@@ -1,11 +1,18 @@
 # This are the commands to be preformed on the attacker 
-apt update
-apt install -y python2 python3 python3-pip nmap xxd net-tools gcc wget curl iputils-ping gnupg vim php
-
 # add attacker user
+cd /home/attacker
+
+apt update
+apt install -y python2 python3 python3-pip nmap xxd net-tools gcc wget curl iputils-ping gnupg vim php openssh-server tcpdump netcat apache2 tree
+service apache2 start
+service ssh start
+curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py
+python2 get-pip.py
+python2 -m pip install requests
+
+pip3 install requests flask flask_cors
 
 # Cheatsheets
-cd /home/attacker
 mkdir Cheatsheets
 cd Cheatsheets
 	# something about how to use python request, with https.
@@ -37,8 +44,11 @@ cd Cheatsheets
 
 
 	# Nmap
-	https://www.stationx.net/nmap-cheat-sheet/
-
+	mkdir nmap
+	cd nmap
+	wget -E -H -k -K -p "https://www.stationx.net/nmap-cheat-sheet/"
+	cd ..
+	
 
 	# msfvenum
 	mkdir msfvenum
@@ -50,10 +60,14 @@ cd Cheatsheets
 
 
 	# Hydra
-	https://redteamtutorials.com/2018/10/25/hydra-brute-force-techniques/
+	mkdir hydra
+	cd hydra
+	wget -E -H -k -K -p "https://redteamtutorials.com/2018/10/25/hydra-brute-force-techniques/"
+	cd ..
+	
 
 	# Gobuster - brute force web directories
-	https://redteamtutorials.com/2018/11/19/gobuster-cheatsheet/
+	#https://redteamtutorials.com/2018/11/19/gobuster-cheatsheet/
 
 
 
@@ -116,17 +130,30 @@ cd /home/attacker/
 mkdir exploits
 cd exploits
 
-# The ssh vulnerability 
-pip3 install paramiko==2.0.8
-git clone https://github.com/blacknbunny/CVE-2018-10933.git
+	# The ssh vulnerability 
+	pip3 install paramiko==2.0.8
+	git clone https://github.com/blacknbunny/CVE-2018-10933.git
 
-# The ProFtpd vulnerability:
-curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py
-python2 get-pip.py
-python2 -m pip install requests
-git clone https://github.com/t0kx/exploit-CVE-2015-3306.git
+	# The ProFtpd vulnerability:
+	git clone https://github.com/t0kx/exploit-CVE-2015-3306.git
+	rm -rf exploit-CVE-2015-3306/Dockerfile
 
-# The sambacry exploit - maybe change a little.
-https://github.com/opsxcq/exploit-CVE-2017-7494.git
+	git clone https://github.com/thegingerninja/ProFTPd_1_3_5_mod_copy_exploit.git
+	"https://www.exploit-db.com/exploits/36803"
+
+	# in metasploit
+	# set payload cmd/unix/reverse_python
+
+
+	# The phpmail vulnerability
+
+
+	# The sambacry exploit - maybe change a little.
+	git clone https://github.com/opsxcq/exploit-CVE-2017-7494.git
+
+
+	# The zip slip vulnerability.
+	git clone https://github.com/snyk/zip-slip-vulnerability.git
+	
 
 

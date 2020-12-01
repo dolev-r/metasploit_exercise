@@ -6,7 +6,7 @@ MAINTAINER t0kx <t0kx@protonmail.ch>
 RUN apt-get update && \
     apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    wget gcc make \
+    wget apache2 php5 gcc make python \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # configure vuln application
@@ -16,6 +16,8 @@ RUN wget ftp://ftp.proftpd.org/distrib/source/proftpd-1.3.5.tar.gz && \
     ./configure --with-modules=mod_copy && \
     make && make install
 
-COPY start_ftp_service.sh /
-ENTRYPOINT ["/main.sh"]
+RUN chmod 777 -R /var/www/html/
+
+COPY start_services.sh /
+ENTRYPOINT ["/start_services.sh"]
 CMD ["default"]

